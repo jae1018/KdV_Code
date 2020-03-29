@@ -1,8 +1,12 @@
 # Run me build files!
 
+# Remake everything
 cd build
 cmake ../
 make
-./main_exec
 
-rm -rf *
+# Execute main program and tests
+./main_exec
+./test_time_deriv_RHS
+
+#rm -rf *

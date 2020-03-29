@@ -1,6 +1,14 @@
-#include "KdV.h"
+/**
+* When solving the KdV equation, one needs to isolate the time derivative.
+* This moves all other terms of the equation to the right-hand-side (RHS),
+* which this function solves for if given the array of values, the spatial
+* step size, and the currently considered index.
+*
+* Author: James "Andy" Edmond
+* Date: March 29, 2020
+*/
 
-// intentionally returning bad values; just making the skeleton first.
+#include "KdV.h"
 
 double time_deriv_RHS(const vector& vec,double space_step,int index) {
   std::cout << "[";

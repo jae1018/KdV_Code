@@ -1,3 +1,11 @@
+/**
+* The header file for the KdV solver. Observe that the term vector is used
+* here to act as a substitue for xtensor<double,1>!
+*
+* Author: James "Andy" Edmond
+* Date: March 29, 2020
+*/
+
 #ifndef KdV_header
 #define KdV_header
 
@@ -12,7 +20,6 @@
 using vector = xt::xtensor<double,1>;
 
 // function declarations
-void double_print_me(double x);
 double time_deriv_RHS(const vector& vec,double space_step_size,int index);
 
 

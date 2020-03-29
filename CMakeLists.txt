@@ -62,8 +62,13 @@ if (NOT xtensor_FOUND)
 endif()
   
 
-add_library(KdV_lib source/double_print_me.cxx source/time_deriv_RHS.cxx)
+add_library(KdV_lib source/time_deriv_RHS.cxx)
 target_link_libraries(KdV_lib xtensor)
 
 add_executable(main_exec source/KdV_main.cxx)
 target_link_libraries(main_exec KdV_lib)
+
+# Adding in some testing
+add_executable(test_time_deriv_RHS source/test_time_deriv_RHS.cxx)
+target_link_libraries(test_time_deriv_RHS KdV_lib GTest::GTest GTest::Main)
+gtest_discover_tests(test_time_deriv_RHS)

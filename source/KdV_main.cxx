@@ -1,4 +1,4 @@
-#include "KdV_Andy.h"
+#include "KdV.h"
 
 int main() {
   std::cout << "num successfully printed?\n";

@@ -62,7 +62,7 @@ if (NOT xtensor_FOUND)
 endif()
   
 
-add_library(KdV_lib source/double_print_me.cxx)
+add_library(KdV_lib source/double_print_me.cxx source/time_deriv_RHS.cxx)
 target_link_libraries(KdV_lib xtensor)
 
 add_executable(main_exec source/KdV_main.cxx)

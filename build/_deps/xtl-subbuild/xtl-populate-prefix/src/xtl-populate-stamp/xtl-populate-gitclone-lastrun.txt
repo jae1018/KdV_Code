@@ -1,3 +1,0 @@
-repository='https://github.com/xtensor-stack/xtl.git'
-module=''
-tag='origin'

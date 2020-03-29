@@ -1,2 +1,0 @@
-/usr/bin/ar qc libKdV_lib.a  CMakeFiles/KdV_lib.dir/source/double_print_me.cxx.o
-/usr/bin/ranlib libKdV_lib.a

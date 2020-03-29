@@ -1,3 +1,0 @@
-/home/jae1018/Proj1/KdV_Code/build/_deps/xtensor-subbuild/CMakeFiles/rebuild_cache.dir
-/home/jae1018/Proj1/KdV_Code/build/_deps/xtensor-subbuild/CMakeFiles/xtensor-populate.dir
-/home/jae1018/Proj1/KdV_Code/build/_deps/xtensor-subbuild/CMakeFiles/edit_cache.dir

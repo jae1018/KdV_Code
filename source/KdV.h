@@ -6,6 +6,7 @@
 #include <xtensor/xarray.hpp>
 #include "xtensor/xio.hpp"
 #include "xtensor/xview.hpp"
+#include <cmath>
 
 // Define "vector" here for brevity (using xtensor<double,1>)
 using vector = xt::xtensor<double,1>;

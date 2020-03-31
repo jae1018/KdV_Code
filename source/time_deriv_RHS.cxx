@@ -1,8 +1,8 @@
 /**
 * When solving the KdV equation, one needs to isolate the time derivative.
 * This moves all other terms of the equation to the right-hand-side (RHS),
-* which this function solves for if given the array of values, the spatial
-* step size, and the currently considered index.
+* which this function solves for if given adjacent values of the considered
+* index and the spatial step size.
 *
 * Author: James "Andy" Edmond
 * Date: March 29, 2020
@@ -21,12 +21,6 @@ double time_deriv_RHS(double u_i_minus_2, double u_i_minus_1, double u_i,
   double first_deriv_term = ( u_i_plus_1 - u_i_minus_1 )
 			        /  ( 2 * space_step );
   double rhs = -1 * third_deriv_term + 6 * u_i * first_deriv_term;
-
- // if ( abs(u_i - 1) < 0.001 ) {
-   /** std::cout << "3rd deriv = " << third_deriv_term << "\n"
-              << "1st deriv = " << first_deriv_term << "\n"
-              << "RHS = " << rhs << "\n"; */
-
   return rhs;
 }
 

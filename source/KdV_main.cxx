@@ -32,6 +32,6 @@ int main() {
   }
   std::cout << "]\n\n";
 
-  arr = time_integrator(arr,time_step,space_step,final_time);
+  time_evolver(arr,time_step,space_step,final_time);
 
 }

@@ -63,7 +63,7 @@ endif()
   
 
 add_library(KdV_lib 
-source/time_deriv_RHS.cxx source/time_integrator.cxx
+source/time_deriv_RHS.cxx source/time_evolver.cxx
 source/index_looper.cxx )
 target_link_libraries(KdV_lib xtensor)
 

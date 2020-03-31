@@ -9,6 +9,8 @@
 * Written: March 29, 2020
 */
 
+// NEEDS TO BE REWRITTEN! 3 CASES, STANDARD LOOPING, AND FORWARDS AND BACKWARDS!!
+
 // Standard non-looping test (looping meaning that the indices wrap around
 // since the spatial points are discretized, e.g. if index = 1, then the
 // 2 indices below that is not -1 but instead (size - 1) - 1.

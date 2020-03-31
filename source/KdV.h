@@ -1,6 +1,7 @@
 /**
 * The header file for the KdV solver. Observe that the term vector is used
-* here to act as a substitue for xtensor<double,1>!
+* here as an alias for xtensor<double,1> and that pi defined to an 8-decimal
+* constant!
 *
 * Author: James "Andy" Edmond
 * Date: March 29, 2020
@@ -25,7 +26,7 @@ using vector = xt::xtensor<double,1>;
 // function declarations
 double time_deriv_RHS(double u_i_minus_2,double u_i_minus_1,double u_i,
 		      double u_i_plus_1,double u_i_plus_2,double space_step);
-vector time_integrator(const vector& vec,double time_step, double space_step,
+void time_evolver(const vector& vec,double time_step, double space_step,
 		       double final_time);
 int index_looper(int index, int vec_size);
 

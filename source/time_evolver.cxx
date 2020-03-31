@@ -1,13 +1,15 @@
 /**
-* Documentation here.
+* Computes the time evolution of the KdV equation by computing its time derivative.
+* The new array computed at each step and printed to an output file and this data
+* is later plotted as a function of time and space.
 *
-*
-*
+* Author: James "Andy" Edmond
+* Date: March 31, 2020
 */
 
 #include "KdV.h"
 
-vector time_integrator(const vector& init_vec, double time_step,
+void time_evolver(const vector& init_vec, double time_step,
 			double space_step, double final_time)
 {
   int size = init_vec.size();
@@ -85,5 +87,5 @@ vector time_integrator(const vector& init_vec, double time_step,
 
   }
 
-  return next_vec;
+ // return next_vec;
 }

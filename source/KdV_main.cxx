@@ -12,6 +12,7 @@
 int main() {
   
   // Define constants
+  const char* filename_out = "KdV_data.txt";
   const double final_length = 2*PI;
   const double final_time = 0.1;
   int const num_space_points = 11;
@@ -32,6 +33,6 @@ int main() {
   }
   std::cout << "]\n\n";
 
-  time_evolver(arr,time_step,space_step,final_time);
+  time_evolver(arr,time_step,space_step,final_time,filename_out);
 
 }

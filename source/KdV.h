@@ -27,7 +27,7 @@ using vector = xt::xtensor<double,1>;
 double time_deriv_RHS(double u_i_minus_2,double u_i_minus_1,double u_i,
 		      double u_i_plus_1,double u_i_plus_2,double space_step);
 void time_evolver(const vector& vec,double time_step, double space_step,
-		       double final_time);
+		       double final_time, const char* file_out);
 int index_looper(int index, int vec_size);
 
 #endif //KdV_header

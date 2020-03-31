@@ -10,7 +10,7 @@
 #include "KdV.h"
 
 void time_evolver(const vector& init_vec, double time_step,
-			double space_step, double final_time)
+			double space_step, double final_time, const char *out_file)
 {
   int size = init_vec.size();
   vector next_vec = xt::empty<double>({size});

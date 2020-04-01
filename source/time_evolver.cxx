@@ -22,20 +22,10 @@ void time_evolver(const vector& init_vec, double time_step,
     prev_vec(i) = init_vec(i);
   }
 
-  // This loops tracks over time
+  // Time loop
   for (int i = 0; i < num_iters; i++) {
-
-    // while this loop tracks over the spatial grid; completing this loop
-    // means that one time step can be completed.
+    // Space loop
     for (int a = 0; a < size; a++) {
-      //double rhs = time_deriv_RHS(init_vec,space_step,a);
-      // Found a helpful link; check it later in more detail
-//https://math.stackexchange.com/questions/1341074/runge-kutta-method-for-pde
-// Shiiiiiiiiittt... time_deriv_RHS has to be rewritten... :( b/c there's no
-// way it can know when to use increment values in k1 through k4 i.e. when
-// we need to consider u_i
-// for now, just treat time_deriv_RHS as though it accepts 6 inputs:
-//   u_i-2 through u_i+2 and space_step_size
 
       // determine u_i_minus_2 through u_i_plus_2
       double u_i_minus_2 = prev_vec(index_looper(a-2,size));
@@ -44,38 +34,27 @@ void time_evolver(const vector& init_vec, double time_step,
       double u_i_plus_1 = prev_vec(index_looper(a+1,size));
       double u_i_plus_2 = prev_vec(index_looper(a+2,size));
 
-    /** if ( abs(u_i - 1) < 0.001 ) {
-       std::cout << "u_i-2 = " << u_i_minus_2 << "\n"
-                 << "u_i-1 = " << u_i_minus_1 << "\n"
-                 << "u_i = " << u_i << "\n"
-                 << "u_i+1 = " << u_i_plus_1 << "\n"
-                 << "u_i+2 = " << u_i_plus_2 << "\n"; }*/
-
+      // On a special note, the RHS of the time derivative in the KdV
+      // equation is *independent* of time! So really, k1=k2=k3=k4.
       // determine k1
       double k1 = time_deriv_RHS(u_i_minus_2,u_i_minus_1,u_i,
 			u_i_plus_1,u_i_plus_2,space_step);
-
       // determine k2
-      double k2 = time_deriv_RHS(u_i_minus_2 + k1/2,
-			u_i_minus_1 + k1/2, u_i + k1/2,
-			u_i_plus_1 + k1/2, u_i_plus_2 + k1/2,space_step);
-
+      /**double k2 = time_deriv_RHS(u_i_minus_2,
+			u_i_minus_1, u_i,
+			u_i_plus_1, u_i_plus_2,space_step);
       // determine k3
-      double k3 = time_deriv_RHS(u_i_minus_2 + k2/2,
-			u_i_minus_1 + k2/2, u_i + k2/2,
-			u_i_plus_1 + k2/2, u_i_plus_2 + k2/2,space_step);
-
+      double k3 = time_deriv_RHS(u_i_minus_2,
+			u_i_minus_1, u_i,
+			u_i_plus_1, u_i_plus_2,space_step);
       // determine k4
-      double k4 = time_deriv_RHS(u_i_minus_2 + k3,
-			u_i_minus_1 + k3, u_i + k3,
-			u_i_plus_1 + k3, u_i_plus_2 + k3,space_step);
-      /**if (a == 0)
-        { std::cout << "k1 = " << k1 << "\n"
-                  << "k2 = " << k2 << "\n"
-                  << "k3 = " << k3 << "\n"
-                  << "k4 = " << k4 << "\n"; }*/
+      double k4 = time_deriv_RHS(u_i_minus_2,
+			u_i_minus_1, u_i,
+			u_i_plus_1, u_i_plus_2,space_step);*/
+      double k2 = k1;
+      double k3 = k1;
+      double k4 = k1;
       next_vec(a) = prev_vec(a) + (time_step/6)*(k1 + 2*(k2 + k3) + k4);
-
     }
     prev_vec = next_vec;
     // printing contents

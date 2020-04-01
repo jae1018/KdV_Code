@@ -1,6 +1,6 @@
 /**
-* The main function for the KdV solver code Emily and I are writing. This
-* code is repsonsible for stating initial parameters and calling the support
+* The driver for the KdV solver code Emily and I are writing. This
+* code is responsible for stating initial parameters and calling the support
 * functions.
 *
 * Author: James "Andy" Edmond
@@ -15,7 +15,7 @@ int main() {
   const char* filename_out = "KdV_data.txt";
   const double final_length = 2*PI;
   const double final_time = 0.1;
-  int const num_space_points = 11;
+  int const num_space_points = 31;
   int const num_time_points = 101;
   // also we assume that start time and start length are 0
 
@@ -24,15 +24,16 @@ int main() {
   double time_step = final_time / (num_time_points - 1);
 
   // Start off with trivial wave function
-  vector arr = xt::empty<double>({num_space_points});
+  vector init_vec = KdV_initializer(num_space_points,final_length);
+  /**vector arr = xt::empty<double>({num_space_points});
   double step = 0.1;
   std::cout << "init values are...\n[ ";
   for (int i = 0; i < arr.size(); i++) {
     arr(i) = cos(i * space_step);
     std::cout << arr(i) << " ";
   }
-  std::cout << "]\n\n";
+  std::cout << "]\n\n";*/
 
-  time_evolver(arr,time_step,space_step,final_time,filename_out);
+  time_evolver(init_vec,time_step,space_step,final_time,filename_out);
 
 }

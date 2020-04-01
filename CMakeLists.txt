@@ -64,7 +64,8 @@ endif()
 
 add_library(KdV_lib 
 source/time_deriv_RHS.cxx source/time_evolver.cxx
-source/index_looper.cxx )
+source/index_looper.cxx source/initializing_function.cxx
+source/KdV_initializer.cxx)
 target_link_libraries(KdV_lib xtensor)
 
 add_executable(main_exec source/KdV_main.cxx)

@@ -20,7 +20,7 @@ double time_deriv_RHS(double u_i_minus_2, double u_i_minus_1, double u_i,
 			/  ( 2 * pow(space_step,3) );
   double first_deriv_term = ( u_i_plus_1 - u_i_minus_1 )
 			        /  ( 2 * space_step );
-  double rhs = -1 * third_deriv_term + 6 * u_i * first_deriv_term;
+  double rhs = -1 * third_deriv_term - 6 * u_i * first_deriv_term;  //made last neg
   return rhs;
 }
 

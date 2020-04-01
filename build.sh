@@ -6,7 +6,8 @@ cmake ../
 make
 
 # Execute main program and tests
-./main_exec
+echo "The KdV code took this long to complete.."
+time ./main_exec
 #./test_time_deriv_RHS
 #./test_index_looper
 

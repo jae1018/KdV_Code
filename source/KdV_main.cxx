@@ -10,30 +10,22 @@
 #include "KdV.h"
 
 int main() {
-  
+
   // Define constants
   const char* filename_out = "KdV_data.txt";
   const double final_length = 2*PI;
-  const double final_time = 0.1;
+  const double final_time = 1.0;
   int const num_space_points = 31;
-  int const num_time_points = 101;
+  int const num_time_points = 10001;
   // also we assume that start time and start length are 0
 
   // Define step sizes based on constants
   double space_step = final_length / (num_space_points - 1);
   double time_step = final_time / (num_time_points - 1);
 
-  // Start off with trivial wave function
+  // prepare init data according to KdV_initializer
   vector init_vec = KdV_initializer(num_space_points,final_length);
-  /**vector arr = xt::empty<double>({num_space_points});
-  double step = 0.1;
-  std::cout << "init values are...\n[ ";
-  for (int i = 0; i < arr.size(); i++) {
-    arr(i) = cos(i * space_step);
-    std::cout << arr(i) << " ";
-  }
-  std::cout << "]\n\n";*/
 
+  // evolve KdV
   time_evolver(init_vec,time_step,space_step,final_time,filename_out);
-
 }

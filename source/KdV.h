@@ -16,6 +16,8 @@
 #include "xtensor/xio.hpp"
 #include "xtensor/xview.hpp"
 #include <cmath>
+#include <iostream>
+#include <fstream>
 
 // Define constants
 #define PI 3.14159265

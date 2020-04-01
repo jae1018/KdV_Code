@@ -10,4 +10,4 @@ make
 #./test_time_deriv_RHS
 #./test_index_looper
 
-rm -rf *
+#rm -rf *

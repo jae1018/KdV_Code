@@ -12,6 +12,8 @@
 void time_evolver(const vector& init_vec, double time_step, double space_step,
 		double final_time, const char* out_file)
 {
+  // --- Prepare initial data ---
+
   // create arrays and params for time loop
   int size = init_vec.size();
   vector next_vec = xt::empty<double>({size});
@@ -23,6 +25,8 @@ void time_evolver(const vector& init_vec, double time_step, double space_step,
   output_file.open(out_file);
   output_file << "num time points = " << num_iters + 1
               << " and num space points = " << size << "\n";
+
+  // --- Save initial data ---
 
   // initialize prev_vec for loop
   for (int i = 0; i < size; i++) {
@@ -36,10 +40,13 @@ void time_evolver(const vector& init_vec, double time_step, double space_step,
   }
   output_file << "\n";
 
+  // --- Iterate to get subsequent data ---
+
   // Time loop
   double time = 0.0;
   for (int i = 0; i < num_iters; i++) {
     // Space loop
+    #pragma omp parallel for
     for (int a = 0; a < size; a++) {
       // determine u_i_minus_2 through u_i_plus_2
       double u_i_minus_2 = prev_vec(index_looper(a-2,size));
@@ -65,17 +72,21 @@ void time_evolver(const vector& init_vec, double time_step, double space_step,
       double k3 = k1;
       double k4 = k1;
       next_vec(a) = prev_vec(a) + (time_step/6)*(k1 + 2*(k2 + k3) + k4);
-    }    // end space loop
+    }    // end space loop (and parallelization)
+
     // prepare vars for next iter
     prev_vec = next_vec;
     time = (i + 1) * time_step;
+
     // print data to file
     output_file << time << "\n";
     for (int i = 0; i < size; i++) {
       output_file << next_vec(i) << "  ";
     }
     output_file << "\n";
+
   }   // end time loop
 
+  // close file, end function
   output_file.close();
 }

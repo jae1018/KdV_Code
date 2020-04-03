@@ -14,9 +14,9 @@ int main() {
   // Define constants
   const char* filename_out = "KdV_data.txt";
   const double final_length = 2*PI;
-  const double final_time = 3.0;
-  int const num_space_points = 51;
-  int const num_time_points = 300001;
+  const double final_time = 5.0;
+  int const num_space_points = 1 + 45;
+  int const num_time_points = 1 + 500000;
   // also we assume that start time and start length are 0
 
   // Define step sizes based on constants

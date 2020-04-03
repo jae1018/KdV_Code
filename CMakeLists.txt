@@ -8,6 +8,8 @@ enable_testing()
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+find_package(OpenMP)
+
 # If we knew GoogleTest is installed, we can just use the following single line
 find_package(GTest)
 
@@ -62,20 +64,26 @@ if (NOT xtensor_FOUND)
 endif()
   
 
+# -- Create general KdV library --
 add_library(KdV_lib 
 source/time_deriv_RHS.cxx source/time_evolver.cxx
 source/index_looper.cxx source/initializing_function.cxx
 source/KdV_initializer.cxx)
 target_link_libraries(KdV_lib xtensor)
 
+# -- Compile main program --
 add_executable(main_exec source/KdV_main.cxx)
 target_link_libraries(main_exec KdV_lib)
+if (OpenMP_CXX_FOUND)
+  target_link_libraries(main_exec OpenMP::OpenMP_CXX)
+endif()
 
-# Adding in some testing
-#add_executable(test_time_deriv_RHS source/test_time_deriv_RHS.cxx)
-#target_link_libraries(test_time_deriv_RHS KdV_lib GTest::GTest GTest::Main)
-#gtest_discover_tests(test_time_deriv_RHS)
+# -- Adding in some testing --
+# Time_deriv_RHS
+add_executable(test_time_deriv_RHS source/test_time_deriv_RHS.cxx)
+target_link_libraries(test_time_deriv_RHS KdV_lib GTest::GTest GTest::Main)
 
+# index_looper
 add_executable(test_index_looper source/test_index_looper.cxx)
 target_link_libraries(test_index_looper KdV_lib GTest::GTest GTest::Main)
 

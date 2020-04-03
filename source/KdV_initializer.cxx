@@ -10,8 +10,10 @@
 #include "KdV.h"
 
 vector KdV_initializer(int num_points, double end_length) {
+  // make step size and empty vector
   vector init_vec = xt::empty<double>({num_points});
   double step_size = (end_length/(num_points -1));
+  // fill vector up
   for (int i = 0; i < num_points; i++) {
     init_vec(i) = initializing_function(step_size*i);
   }

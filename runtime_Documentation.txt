@@ -1,0 +1,74 @@
+PARAMETERS:
+num_t_points = 5*10**5 + 1
+num_x_points = 35 + 1
+
+Runtimes when NOT-PARALLELIZED (10 samples, in sec):
+23.37
+22.92
+22.76
+22.59
+24.38
+21.38
+22.6
+21.89
+21.67
+22.36
+===> Avg runtime: 22.59 sec
+
+Runtime when PARALLELIZED (4 samples each, in sec):
+1 Core:
+23.55
+23.07
+23.84
+21.67
+==> Avg runtime: 23.03
+
+2 Cores:
+23.56
+23.12
+22.06
+22.46
+==> Avg runtime: 22.8
+
+3 Cores:
+24.32
+22.75
+22.83
+23.56
+==> Avg runtime: 23.37
+
+4 Cores:
+23.81
+22.26
+22.69
+22.59
+== Avg runtime: 22.84
+
+5 Cores:
+23.82
+22.85
+23.03
+24.13
+==> Avg runtime: 23.46
+
+6 Cores:
+22.51
+22.53
+23.53
+23.08
+==> Avg runtime: 22.91
+
+7 Cores:
+23.77
+24.54
+23.3
+22.75
+==> Avg runtime: 23.59
+
+8 Cores:
+22.57
+23.27
+23.16
+23.21
+==> Avg runtime: 23.05
+

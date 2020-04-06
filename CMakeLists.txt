@@ -87,3 +87,6 @@ target_link_libraries(test_time_deriv_RHS KdV_lib GTest::GTest GTest::Main)
 add_executable(test_index_looper source/test_index_looper.cxx)
 target_link_libraries(test_index_looper KdV_lib GTest::GTest GTest::Main)
 
+# KdV initializer
+add_executable(test_KdV_init source/test_KdV_initializer.cxx)
+target_link_libraries(test_KdV_init KdV_lib GTest::GTest GTest::Main)

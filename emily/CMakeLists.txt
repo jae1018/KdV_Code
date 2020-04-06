@@ -51,6 +51,9 @@ if (NOT xtensor_FOUND)
   endif()
 endif()
 
+add_executable(test_KdV_initializer source/test_KdV_initializer.cpp)
 add_library(KdV_lib source/initializing_function.cpp source/KdV_initializer.cpp)
 target_link_libraries(KdV_lib xtensor)
+target_link_libraries(test_KdV_initializer KdV_lib GTest::GTest GTest::Main)
+gtest_discover_tests(test_KdV_initializer)
 

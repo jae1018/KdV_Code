@@ -1,0 +1,2 @@
+/usr/bin/ar qc libKdV_lib.a  CMakeFiles/KdV_lib.dir/initializing_function.cpp.o CMakeFiles/KdV_lib.dir/KdV_initializer.cpp.o
+/usr/bin/ranlib libKdV_lib.a

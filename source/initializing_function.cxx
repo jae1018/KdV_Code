@@ -10,5 +10,9 @@
 #include "KdV.h"
 
 double initializing_function(double x) {
-  return cos(x);
+  //return cos(x);
+  double width = 0.05;
+  double amp = 1/sqrt(2*3.14159265*width);
+  double shift = x - 3.14159265;
+  return amp * exp(-pow(shift,2)/(2*width));
 }
